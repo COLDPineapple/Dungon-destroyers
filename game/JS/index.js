@@ -31,6 +31,18 @@ let slime2 = {
 	damage: 15,
 };
 
+let stick = {
+	dmg:5
+}
+let heathPot = {
+	heath:25
+}
+let sword = {
+	dmg:30
+}
+let helmet = {
+	heath:30
+}
 // starts the new round and shows the monsters
 function newRound(
 	monster1Heath,
@@ -376,22 +388,22 @@ let slot6Empty = true;
 function checkifempty() {
 	// get random number depending on number depends on loot
 	if (slot1Empty == true) {
-		reandomAdd(slot1);
+		reandomAdd(slot1,slot1Is);
 		slot1Empty = false;
 	} else if (slot2Empty == true) {
-		reandomAdd(slot2);
+		reandomAdd(slot2,slot2Is);
 		slot2Empty = false;
 	} else if (slot3Empty == true) {
-		reandomAdd(slot3);
+		reandomAdd(slot3,slot3Is);
 		slot3Empty = false;
 	} else if (slot4Empty == true) {
-		reandomAdd(slot4);
+		reandomAdd(slot4,slot4Is);
 		slot4Empty = false;
 	} else if (slot5Empty == true) {
-		reandomAdd(slot5);
+		reandomAdd(slot5,slot5Is);
 		slot5Empty = false;
 	} else if (slot6Empty == true) {
-		reandomAdd(slot6);
+		reandomAdd(slot6,slot6Is) ;
 		slot6Empty = false;
 	}
 }
@@ -406,22 +418,26 @@ let slot6Is = "";
 // adds random thing
 
 let mat = 0;
-function reandomAdd(x) {
+function reandomAdd(x,slot) {
 	mat = Math.floor(Math.random(1) * 5);
 
 	console.log(mat);
 
 	if ((mat == 0)) {
 		x.src = "images/heath.png";
+		slot = "heath"
 	} else if ((mat == 1)) {
 		x.src = "images/leach.png";
-		console.log(mat);
+		slot = "leach"
 	} else if ((mat == 2)) {
 		x.src = "images/sword.png";
+		slot = sword
 	} else if ((mat == 3)) {
 		x.src = "images/stick.png";
+		slot = "stick"
 	} else if ((mat == 4)) {
 		x.src = "images/heath-pot.png";
+		slot = "heathPot"
 	// } else if ((mat == 5)) {
 	// 	x.src = "images/Slime-2.png";
 	// } else if ((mat == 6)) {
@@ -431,5 +447,11 @@ function reandomAdd(x) {
 	} else {
 		x.src = "images/Slime-1.png";
 	}
+}
+
+slot1.addEventListener ("click", () => buffs());
+
+function buffs() { 
+if(slot1 == "heath" || slot1== "heath" |)
 }
 gameStart();
