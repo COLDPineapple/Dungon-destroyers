@@ -32,17 +32,17 @@ let slime2 = {
 };
 
 let stick = {
-	dmg:5
-}
+	dmg: 5,
+};
 let heathPot = {
-	heath:25
-}
+	heath: 25,
+};
 let sword = {
-	dmg:30
-}
+	dmg: 30,
+};
 let helmet = {
-	heath:30
-}
+	heath: 30,
+};
 // starts the new round and shows the monsters
 function newRound(
 	monster1Heath,
@@ -368,6 +368,14 @@ function monsterDead() {
 	}
 }
 
+// defines what is in what slot
+let slot1Is = "gay";
+let slot2Is = "gay";
+let slot3Is = "gay";
+let slot4Is = "gay";
+let slot5Is = "gay";
+let slot6Is = "gay";
+
 // drops loot when monster is killed
 // gets html ids for droping loot
 let slot1 = document.querySelector("#slot1");
@@ -388,70 +396,74 @@ let slot6Empty = true;
 function checkifempty() {
 	// get random number depending on number depends on loot
 	if (slot1Empty == true) {
-		reandomAdd(slot1,slot1Is);
+		reandomAdd(slot1, slot1Is);
 		slot1Empty = false;
 	} else if (slot2Empty == true) {
-		reandomAdd(slot2,slot2Is);
+		reandomAdd(slot2, slot2Is);
 		slot2Empty = false;
 	} else if (slot3Empty == true) {
-		reandomAdd(slot3,slot3Is);
+		reandomAdd(slot3, slot3Is);
 		slot3Empty = false;
 	} else if (slot4Empty == true) {
-		reandomAdd(slot4,slot4Is);
+		reandomAdd(slot4, slot4Is);
 		slot4Empty = false;
 	} else if (slot5Empty == true) {
-		reandomAdd(slot5,slot5Is);
+		reandomAdd(slot5, slot5Is);
 		slot5Empty = false;
 	} else if (slot6Empty == true) {
-		reandomAdd(slot6,slot6Is) ;
+		reandomAdd(slot6, slot6Is);
 		slot6Empty = false;
 	}
 }
-// defines what is in what slot
-let slot1Is = ""
-let slot2Is = "";
-let slot3Is = "";
-let slot4Is = "";
-let slot5Is = "";
-let slot6Is = "";
 
 // adds random thing
 
 let mat = 0;
-function reandomAdd(x,slot) {
+function reandomAdd(x, slotIs) {
 	mat = Math.floor(Math.random(1) * 5);
 
-	console.log(mat);
+	// console.log(mat);
+	// console.log(slotIs);
 
-	if ((mat == 0)) {
+	if (mat == 0) {
 		x.src = "images/heath.png";
-		slot = "heath"
-	} else if ((mat == 1)) {
+		return (slotIs = 10);
+	} else if (mat == 1) {
 		x.src = "images/leach.png";
-		slot = "leach"
-	} else if ((mat == 2)) {
+		slotIs = "leach";
+	} else if (mat == 2) {
 		x.src = "images/sword.png";
-		slot = sword
-	} else if ((mat == 3)) {
+		slotIs = sword;
+	} else if (mat == 3) {
 		x.src = "images/stick.png";
-		slot = "stick"
-	} else if ((mat == 4)) {
+		slotIs = "stick";
+	} else if (mat == 4) {
 		x.src = "images/heath-pot.png";
-		slot = "heathPot"
-	// } else if ((mat == 5)) {
-	// 	x.src = "images/Slime-2.png";
-	// } else if ((mat == 6)) {
-	// 	x.src = "images/Slime-1.png";
-	// } else if ((mat == 7)) {
-	// 	x.src = "images/Slime-2.png";
+		slotIs = "heathPot";
+		// } else if ((mat == 5)) {
+		// 	x.src = "images/Slime-2.png";
+		// } else if ((mat == 6)) {
+		// 	x.src = "images/Slime-1.png";
+		// } else if ((mat == 7)) {
+		// 	x.src = "images/Slime-2.png";
 	} else {
 		x.src = "images/Slime-1.png";
 	}
 }
 
-slot1.addEventListener ("click", () => buffs());
+slot1.addEventListener("click", () => buffs(slot1Is));
+slot2.addEventListener("click", () => buffs(slot2Is));
+slot3.addEventListener("click", () => buffs(slot3Is));
+slot4.addEventListener("click", () => buffs(slot4Is));
+slot5.addEventListener("click", () => buffs(slot4Is));
+slot6.addEventListener("click", () => buffs(slot6Is));
 
-function buffs() { 
-if(slot1 == "heath" || slot1== "heath" |)
+function buffs(slotIs) {
+	console.log(slot1Is);
+	if (slotIs == "heath") {
+		playerHeath.textContent = playerHeath.textContent + helmet.heath;
+	} else if (slotIs == "leach") {
+		playerHeath.textContent = playerHeath.textContent + 100;
+	}
 }
 gameStart();
