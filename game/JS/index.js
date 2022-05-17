@@ -113,26 +113,26 @@ function monster5IsClicked() {
 function attack() {
 	// if monster 1 is clicked the subtraced the dmg of the player from monsters heath
 	if (isMonster1Clicked == true) {
-		monsterHeath1.textContent = monsterHeath1.textContent - player.damage;
+		monsterHeath1.textContent = monsterHeath1.textContent - playerdmg.textContent;
 		monster1dead();
 		isMonster1Clicked = false;
 	} else if (isMonster2Clicked == true) {
-		monsterHeath2.textContent = monsterHeath2.textContent - player.damage;
+		monsterHeath2.textContent = monsterHeath2.textContent - playerdmg.textContent;
 
 		monster2dead();
 		isMonster2Clicked = false;
 	} else if (isMonster3Clicked == true) {
-		monsterHeath3.textContent = monsterHeath3.textContent - player.damage;
+		monsterHeath3.textContent = monsterHeath3.textContent - playerdmg.textContent;
 
 		monster3dead();
 		isMonster3Clicked = false;
 	} else if (isMonster4Clicked == true) {
-		monsterHeath4.textContent = monsterHeath4.textContent - player.damage;
+		monsterHeath4.textContent = monsterHeath4.textContent - playerdmg.textContent;
 
 		monster4dead();
 		isMonster4Clicked = false;
 	} else if (isMonster5Clicked == true) {
-		monsterHeath5.textContent = monsterHeath5.textContent - player.damage;
+		monsterHeath5.textContent = monsterHeath5.textContent - playerdmg.textContent;
 		monster5dead();
 		isMonster5Clicked = false;
 	}
@@ -369,12 +369,12 @@ function monsterDead() {
 }
 
 // defines what is in what slot
-let slot1Is = "gay";
-let slot2Is = "gay";
-let slot3Is = "gay";
-let slot4Is = "gay";
-let slot5Is = "gay";
-let slot6Is = "gay";
+let slot1Is = "heath";
+let slot2Is = "heath";
+let slot3Is = "heath";
+let slot4Is = "heath";
+let slot5Is = "heath";
+let slot6Is = "heath";
 
 // drops loot when monster is killed
 // gets html ids for droping loot
@@ -396,22 +396,23 @@ let slot6Empty = true;
 function checkifempty() {
 	// get random number depending on number depends on loot
 	if (slot1Empty == true) {
-		reandomAdd(slot1, slot1Is);
+		reandomAddS1(slot1, slot1Is);
 		slot1Empty = false;
+		console.log(slot1Is);
 	} else if (slot2Empty == true) {
-		reandomAdd(slot2, slot2Is);
+		reandomAddS2(slot2, slot2Is);
 		slot2Empty = false;
 	} else if (slot3Empty == true) {
-		reandomAdd(slot3, slot3Is);
+		reandomAddS3(slot3, slot3Is);
 		slot3Empty = false;
 	} else if (slot4Empty == true) {
-		reandomAdd(slot4, slot4Is);
+		reandomAddS4(slot4, slot4Is);
 		slot4Empty = false;
 	} else if (slot5Empty == true) {
-		reandomAdd(slot5, slot5Is);
+		reandomAddS5(slot5, slot5Is);
 		slot5Empty = false;
 	} else if (slot6Empty == true) {
-		reandomAdd(slot6, slot6Is);
+		reandomAddS6(slot6, slot6Is);
 		slot6Empty = false;
 	}
 }
@@ -419,27 +420,29 @@ function checkifempty() {
 // adds random thing
 
 let mat = 0;
-function reandomAdd(x, slotIs) {
+let mat1 = 0;
+let mat2 = 0;
+let mat3 = 0;
+let mat4 = 0;
+let mat5 = 0;
+
+function reandomAddS1(x) {
 	mat = Math.floor(Math.random(1) * 5);
-
-	// console.log(mat);
-	// console.log(slotIs);
-
 	if (mat == 0) {
 		x.src = "images/heath.png";
-		return (slotIs = 10);
+		slot1Is = "heath";
 	} else if (mat == 1) {
 		x.src = "images/leach.png";
-		slotIs = "leach";
+		slot1Is = "leach";
 	} else if (mat == 2) {
 		x.src = "images/sword.png";
-		slotIs = sword;
+		slot1Is = "sword";
 	} else if (mat == 3) {
 		x.src = "images/stick.png";
-		slotIs = "stick";
+		slot1Is = "stick";
 	} else if (mat == 4) {
 		x.src = "images/heath-pot.png";
-		slotIs = "heathPot";
+		slot1Is = "heathPot";
 		// } else if ((mat == 5)) {
 		// 	x.src = "images/Slime-2.png";
 		// } else if ((mat == 6)) {
@@ -451,19 +454,332 @@ function reandomAdd(x, slotIs) {
 	}
 }
 
-slot1.addEventListener("click", () => buffs(slot1Is));
-slot2.addEventListener("click", () => buffs(slot2Is));
-slot3.addEventListener("click", () => buffs(slot3Is));
-slot4.addEventListener("click", () => buffs(slot4Is));
-slot5.addEventListener("click", () => buffs(slot4Is));
-slot6.addEventListener("click", () => buffs(slot6Is));
-
-function buffs(slotIs) {
-	console.log(slot1Is);
-	if (slotIs == "heath") {
-		playerHeath.textContent = playerHeath.textContent + helmet.heath;
-	} else if (slotIs == "leach") {
-		playerHeath.textContent = playerHeath.textContent + 100;
+function reandomAddS2(x) {
+	mat1 = Math.floor(Math.random(1) * 5);
+	if (mat1 == 0) {
+		x.src = "images/heath.png";
+		slot2Is = "heath";
+	} else if (mat1 == 1) {
+		x.src = "images/leach.png";
+		slot2Is = "leach";
+	} else if (mat1 == 2) {
+		x.src = "images/sword.png";
+		slot2Is = "sword";
+	} else if (mat1 == 3) {
+		x.src = "images/stick.png";
+		slot2Is = "stick";
+	} else if (mat1 == 4) {
+		x.src = "images/heath-pot.png";
+		slot2Is = "heathPot";
+		// } else if ((mat == 5)) {
+		// 	x.src = "images/Slime-2.png";
+		// } else if ((mat == 6)) {
+		// 	x.src = "images/Slime-1.png";
+		// } else if ((mat == 7)) {
+		// 	x.src = "images/Slime-2.png";
+	} else {
+		x.src = "images/Slime-1.png";
 	}
 }
+
+function reandomAddS3(x) {
+	mat2 = Math.floor(Math.random(1) * 5);
+	if (mat2 == 0) {
+		x.src = "images/heath.png";
+		slot3Is = "heath";
+	} else if (mat2 == 1) {
+		x.src = "images/leach.png";
+		slot3Is = "leach";
+	} else if (mat2 == 2) {
+		x.src = "images/sword.png";
+		slot3Is = "sword";
+	} else if (mat2 == 3) {
+		x.src = "images/stick.png";
+		slot3Is = "stick";
+	} else if (mat2 == 4) {
+		x.src = "images/heath-pot.png";
+		slot3Is = "heathPot";
+		// } else if ((mat == 5)) {
+		// 	x.src = "images/Slime-2.png";
+		// } else if ((mat == 6)) {
+		// 	x.src = "images/Slime-1.png";
+		// } else if ((mat == 7)) {
+		// 	x.src = "images/Slime-2.png";
+	} else {
+		x.src = "images/Slime-1.png";
+	}
+}
+
+function reandomAddS4(x) {
+	mat3 = Math.floor(Math.random(1) * 5);
+	if (mat3 == 0) {
+		x.src = "images/heath.png";
+		slot4Is = "heath";
+	} else if (mat3 == 1) {
+		x.src = "images/leach.png";
+		slot4Is = "leach";
+	} else if (mat3 == 2) {
+		x.src = "images/sword.png";
+		slot4Is = "sword";
+	} else if (mat3 == 3) {
+		x.src = "images/stick.png";
+		slot4Is = "stick";
+	} else if (mat3 == 4) {
+		x.src = "images/heath-pot.png";
+		slot4Is = "heathPot";
+		// } else if ((mat == 5)) {
+		// 	x.src = "images/Slime-2.png";
+		// } else if ((mat == 6)) {
+		// 	x.src = "images/Slime-1.png";
+		// } else if ((mat == 7)) {
+		// 	x.src = "images/Slime-2.png";
+	} else {
+		x.src = "images/Slime-1.png";
+	}
+}
+
+function reandomAddS5(x) {
+	mat4 = Math.floor(Math.random(1) * 5);
+	if (mat4 == 0) {
+		x.src = "images/heath.png";
+		slot5Is = "heath";
+	} else if (mat4 == 1) {
+		x.src = "images/leach.png";
+		slot5Is = "leach";
+	} else if (mat4 == 2) {
+		x.src = "images/sword.png";
+		slot5Is = "sword";
+	} else if (mat4 == 3) {
+		x.src = "images/stick.png";
+		slot5Is = "stick";
+	} else if (mat4 == 4) {
+		x.src = "images/heath-pot.png";
+		slot5Is = "heathPot";
+		// } else if ((mat == 5)) {
+		// 	x.src = "images/Slime-2.png";
+		// } else if ((mat == 6)) {
+		// 	x.src = "images/Slime-1.png";
+		// } else if ((mat == 7)) {
+		// 	x.src = "images/Slime-2.png";
+	} else {
+		x.src = "images/Slime-1.png";
+	}
+}
+
+function reandomAddS6(x) {
+	mat5 = Math.floor(Math.random(1) * 5);
+	if (mat1 == 0) {
+		x.src = "images/heath.png";
+		slot6Is = "heath";
+	} else if (mat5 == 1) {
+		x.src = "images/leach.png";
+		slot6Is = "leach";
+	} else if (mat5 == 2) {
+		x.src = "images/sword.png";
+		slot6Is = "sword";
+	} else if (mat5 == 3) {
+		x.src = "images/stick.png";
+		slot6Is = "stick";
+	} else if (mat5 == 4) {
+		x.src = "images/heath-pot.png";
+		slot6Is = "heathPot";
+		// } else if ((mat == 5)) {
+		// 	x.src = "images/Slime-2.png";
+		// } else if ((mat == 6)) {
+		// 	x.src = "images/Slime-1.png";
+		// } else if ((mat == 7)) {
+		// 	x.src = "images/Slime-2.png";
+	} else {
+		x.src = "images/Slime-1.png";
+	}
+}
+
+slot1.addEventListener("click", () => buffs1(slot1Is,slot1));
+slot2.addEventListener("click", () => buffs2(slot2Is,slot2 ));
+slot3.addEventListener("click", () => buffs3(slot3Is, slot3));
+slot4.addEventListener("click", () => buffs4(slot4Is,slot4));
+slot5.addEventListener("click", () => buffs5(slot5Is,slot5));
+slot6.addEventListener("click", () => buffs6(slot6Is,slot6));
+
+function buffs1(slotIs, x) {
+	if (slotIs == "heath") {
+		playerHeath.textContent = parseInt(playerHeath.textContent) + 30;
+		x.src = "images/none.jfif"
+		slot1Is = ""
+		slot1Empty = true; 
+	} else if (slotIs == "leach") {
+		playerHeath.textContent = parseInt(playerHeath.textContent) + 100;
+		x.src = "images/none.jfif";
+		slot1Is = "";
+		slot1Empty = true;
+		
+	} else if (slotIs == "sword") {
+		playerdmg.textContent = parseInt(playerdmg.textContent) + 30;
+		x.src = "images/none.jfif";
+		slot1Is = "";
+		slot1Empty = true;
+	} else if (slotIs == "stick") {
+		playerdmg.textContent = parseInt(playerdmg.textContent) + 5;
+		x.src = "images/none.jfif";
+		slot1Is = "";
+		slot1Empty = true;
+	} else if (slotIs == "heathPot") {
+		playerHeath.textContent = parseInt(playerHeath.textContent) + 100;
+		x.src = "images/none.jfif";
+		slot1Is = "";
+		slot1Empty = true;
+	
+	} else{}
+}
+
+function buffs2(slotIs, x) {
+	if (slotIs == "heath") {
+		playerHeath.textContent = parseInt(playerHeath.textContent) + 30;
+		x.src = "images/none.jfif";
+		slot2Is = "";
+		slot2Empty = true;
+	} else if (slotIs == "leach") {
+		playerHeath.textContent = parseInt(playerHeath.textContent) + 100;
+		x.src = "images/none.jfif";
+		slot2Is = "";
+		slot2Empty = true;
+	} else if (slotIs == "sword") {
+		playerdmg.textContent = parseInt(playerdmg.textContent) + 30;
+		x.src = "images/none.jfif";
+		slot2Is = "";
+		slot2Empty = true;
+	} else if (slotIs == "stick") {
+		playerdmg.textContent = parseInt(playerdmg.textContent) + 5;
+		x.src = "images/none.jfif";
+		slot2Is = "";
+		slot2Empty = true;
+	} else if (slotIs == "heathPot") {
+		playerHeath.textContent = parseInt(playerHeath.textContent) + 100;
+		x.src = "images/none.jfif";
+		slot2Is = "";
+		slot2Empty = true;
+	} else {
+	}
+} 
+
+function buffs3(slotIs, x) {
+	if (slotIs == "heath") {
+		playerHeath.textContent = parseInt(playerHeath.textContent) + 30;
+		x.src = "images/none.jfif";
+		slot3Is = "";
+		slot3Empty = true;
+	} else if (slotIs == "leach") {
+		playerHeath.textContent = parseInt(playerHeath.textContent) + 100;
+		x.src = "images/none.jfif";
+		slot3Is = "";
+		slot3Empty = true;
+	} else if (slotIs == "sword") {
+		playerdmg.textContent = parseInt(playerdmg.textContent) + 30;
+		x.src = "images/none.jfif";
+		slot3Is = "";
+		slot3Empty = true;
+	} else if (slotIs == "stick") {
+		playerdmg.textContent = parseInt(playerdmg.textContent) + 5;
+		x.src = "images/none.jfif";
+		slot3Is = "";
+		slot3Empty = true;
+	} else if (slotIs == "heathPot") {
+		playerHeath.textContent = parseInt(playerHeath.textContent) + 100;
+		x.src = "images/none.jfif";
+		slot3Is = "";
+		slot3Empty = true;
+	} else {
+	}
+}
+
+function buffs4(slotIs, x) {
+	if (slotIs == "heath") {
+		playerHeath.textContent = parseInt(playerHeath.textContent) + 30;
+		x.src = "images/none.jfif";
+		slot4Is = "";
+		slot4Empty = true;
+	} else if (slotIs == "leach") {
+		playerHeath.textContent = parseInt(playerHeath.textContent) + 100;
+		x.src = "images/none.jfif";
+		slot4Is = "";
+		slot4Empty = true;
+	} else if (slotIs == "sword") {
+		playerdmg.textContent = parseInt(playerdmg.textContent) + 30;
+		x.src = "images/none.jfif";
+		slot4Is = "";
+		slot4Empty = true;
+	} else if (slotIs == "stick") {
+		playerdmg.textContent = parseInt(playerdmg.textContent) + 5;
+		x.src = "images/none.jfif";
+		slot4Is = "";
+		slot4Empty = true;
+	} else if (slotIs == "heathPot") {
+		playerHeath.textContent = parseInt(playerHeath.textContent) + 100;
+		x.src = "images/none.jfif";
+		slot4Is = "";
+		slot4Empty = true;
+	} else {
+	}
+} 
+
+function buffs5(slotIs, x) {
+	if (slotIs == "heath") {
+		playerHeath.textContent = parseInt(playerHeath.textContent) + 30;
+		x.src = "images/none.jfif";
+		slot5Is = "";
+		slot5Empty = true;
+	} else if (slotIs == "leach") {
+		playerHeath.textContent = parseInt(playerHeath.textContent) + 100;
+		x.src = "images/none.jfif";
+		slot5Is = "";
+		slot5Empty = true;
+	} else if (slotIs == "sword") {
+		playerdmg.textContent = parseInt(playerdmg.textContent) + 30;
+		x.src = "images/none.jfif";
+		slot5Is = "";
+		slot5Empty = true;
+	} else if (slotIs == "stick") {
+		playerdmg.textContent = parseInt(playerdmg.textContent) + 5;
+		x.src = "images/none.jfif";
+		slot5Is = "";
+		slot5Empty = true;
+	} else if (slotIs == "heathPot") {
+		playerHeath.textContent = parseInt(playerHeath.textContent) + 100;
+		x.src = "images/none.jfif";
+		slot5Is = "";
+		slot5Empty = true;
+	} else {
+	}
+}
+
+function buffs6(slotIs, x) {
+	if (slotIs == "heath") {
+		playerHeath.textContent = parseInt(playerHeath.textContent) + 30;
+		x.src = "images/none.jfif";
+		slot6Is = "";
+		slot6Empty = true;
+	} else if (slotIs == "leach") {
+		playerHeath.textContent = parseInt(playerHeath.textContent) + 100;
+		x.src = "images/none.jfif";
+		slot6Is = "";
+		slot6Empty = true;
+	} else if (slotIs == "sword") {
+		playerdmg.textContent = parseInt(playerdmg.textContent) + 30;
+		x.src = "images/none.jfif";
+		slot6Is = "";
+		slot6Empty = true;
+	} else if (slotIs == "stick") {
+		playerdmg.textContent = parseInt(playerdmg.textContent) + 5;
+		x.src = "images/none.jfif";
+		slot6Is = "";
+		slot6Empty = true;
+	} else if (slotIs == "heathPot") {
+		playerHeath.textContent = parseInt(playerHeath.textContent) + 100;
+		x.src = "images/none.jfif";
+		slot6Is = "";
+		slot6Empty = true;
+	} else {
+	}
+}
+
 gameStart();
