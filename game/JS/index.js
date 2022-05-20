@@ -17,6 +17,7 @@ let monsterImg5 = document.querySelector("#monster5img");
 let playerHeath = document.querySelector("#playerHeath");
 let playerdmg = document.querySelector("#playerdmg");
 let game = document.querySelector("#game");
+let GameOver = document.querySelector("#dead");
 // defines the player and the monsters
 let player = {
 	heath: 120,
@@ -113,26 +114,31 @@ function monster5IsClicked() {
 function attack() {
 	// if monster 1 is clicked the subtraced the dmg of the player from monsters heath
 	if (isMonster1Clicked == true) {
-		monsterHeath1.textContent = monsterHeath1.textContent - playerdmg.textContent;
+		monsterHeath1.textContent =
+			monsterHeath1.textContent - playerdmg.textContent;
 		monster1dead();
 		isMonster1Clicked = false;
 	} else if (isMonster2Clicked == true) {
-		monsterHeath2.textContent = monsterHeath2.textContent - playerdmg.textContent;
+		monsterHeath2.textContent =
+			monsterHeath2.textContent - playerdmg.textContent;
 
 		monster2dead();
 		isMonster2Clicked = false;
 	} else if (isMonster3Clicked == true) {
-		monsterHeath3.textContent = monsterHeath3.textContent - playerdmg.textContent;
+		monsterHeath3.textContent =
+			monsterHeath3.textContent - playerdmg.textContent;
 
 		monster3dead();
 		isMonster3Clicked = false;
 	} else if (isMonster4Clicked == true) {
-		monsterHeath4.textContent = monsterHeath4.textContent - playerdmg.textContent;
+		monsterHeath4.textContent =
+			monsterHeath4.textContent - playerdmg.textContent;
 
 		monster4dead();
 		isMonster4Clicked = false;
 	} else if (isMonster5Clicked == true) {
-		monsterHeath5.textContent = monsterHeath5.textContent - playerdmg.textContent;
+		monsterHeath5.textContent =
+			monsterHeath5.textContent - playerdmg.textContent;
 		monster5dead();
 		isMonster5Clicked = false;
 	}
@@ -211,6 +217,39 @@ function attack() {
 					slime1.damage,
 					slime1.damage
 				);
+			} else if (roundCheck == 2) {
+				NewRoundImg(
+					"images/Slime-2.png",
+					"images/Slime-2.png",
+					"images/Slime-2.png",
+					"images/Slime-2.png",
+					"images/Slime-2.png",
+					"",
+					"",
+					"",
+					"",
+					"none"
+				);
+				NewRoundHeath(
+					slime2.heath,
+					slime2.heath,
+					slime2.heath,
+					slime2.heath,
+					slime2.heath,
+					"",
+					"",
+					"",
+					"",
+					"none"
+				);
+				displayDamage(
+					slime2.damage,
+					slime2.damage,
+					slime2.damage,
+					slime2.damage,
+					slime2.damage
+				);
+			} else if (roundcheck == 3) {
 			}
 			roundCheck++;
 		}
@@ -345,6 +384,7 @@ function gameStart() {
 	playerDmg.textContent = player.damage;
 	displayDamage(slime1.damage, slime1.damage, slime1.damage);
 	roundCheck = 0;
+	GameOver.style.display = "none";
 }
 
 monsterImg1.addEventListener("click", () => monster1IsClicked());
@@ -357,6 +397,7 @@ monsterImg5.addEventListener("click", () => monster5IsClicked());
 
 function attacksYou(monsterAttack) {
 	playerHeath.textContent = playerHeath.textContent - monsterAttack;
+	areyoudead();
 }
 // see if monster dies
 
@@ -594,25 +635,24 @@ function reandomAddS6(x) {
 	}
 }
 
-slot1.addEventListener("click", () => buffs1(slot1Is,slot1));
-slot2.addEventListener("click", () => buffs2(slot2Is,slot2 ));
+slot1.addEventListener("click", () => buffs1(slot1Is, slot1));
+slot2.addEventListener("click", () => buffs2(slot2Is, slot2));
 slot3.addEventListener("click", () => buffs3(slot3Is, slot3));
-slot4.addEventListener("click", () => buffs4(slot4Is,slot4));
-slot5.addEventListener("click", () => buffs5(slot5Is,slot5));
-slot6.addEventListener("click", () => buffs6(slot6Is,slot6));
+slot4.addEventListener("click", () => buffs4(slot4Is, slot4));
+slot5.addEventListener("click", () => buffs5(slot5Is, slot5));
+slot6.addEventListener("click", () => buffs6(slot6Is, slot6));
 
 function buffs1(slotIs, x) {
 	if (slotIs == "heath") {
 		playerHeath.textContent = parseInt(playerHeath.textContent) + 30;
-		x.src = "images/none.jfif"
-		slot1Is = ""
-		slot1Empty = true; 
+		x.src = "images/none.jfif";
+		slot1Is = "";
+		slot1Empty = true;
 	} else if (slotIs == "leach") {
 		playerHeath.textContent = parseInt(playerHeath.textContent) + 100;
 		x.src = "images/none.jfif";
 		slot1Is = "";
 		slot1Empty = true;
-		
 	} else if (slotIs == "sword") {
 		playerdmg.textContent = parseInt(playerdmg.textContent) + 30;
 		x.src = "images/none.jfif";
@@ -628,8 +668,8 @@ function buffs1(slotIs, x) {
 		x.src = "images/none.jfif";
 		slot1Is = "";
 		slot1Empty = true;
-	
-	} else{}
+	} else {
+	}
 }
 
 function buffs2(slotIs, x) {
@@ -660,7 +700,7 @@ function buffs2(slotIs, x) {
 		slot2Empty = true;
 	} else {
 	}
-} 
+}
 
 function buffs3(slotIs, x) {
 	if (slotIs == "heath") {
@@ -720,7 +760,7 @@ function buffs4(slotIs, x) {
 		slot4Empty = true;
 	} else {
 	}
-} 
+}
 
 function buffs5(slotIs, x) {
 	if (slotIs == "heath") {
@@ -779,6 +819,13 @@ function buffs6(slotIs, x) {
 		slot6Is = "";
 		slot6Empty = true;
 	} else {
+	}
+}
+function areyoudead() {
+	if (playerHeath.textContent <= 0) {
+		GameOver.style.display = "block";
+		game.style.display = "none";
+		console.log(GameOver);
 	}
 }
 
